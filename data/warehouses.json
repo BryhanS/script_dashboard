@@ -1,0 +1,18 @@
+[
+  { "warehouse_description": "Almacén Oficina Principal", "warehouse_id": 1 },
+  { "warehouse_description": "Almacén - Online", "warehouse_id": 2 },
+  { "warehouse_description": "Almacén - Caminos del Inca", "warehouse_id": 3 },
+  { "warehouse_description": "Almacén - Taller", "warehouse_id": 4 },
+  { "warehouse_description": "Almacén - Reparacion", "warehouse_id": 5 },
+  {
+    "warehouse_description": "Almacén - Caminos del Inca - Transito",
+    "warehouse_id": 6
+  },
+  {
+    "warehouse_description": "Almacén - Reparacion  - Piezas",
+    "warehouse_id": 7
+  },
+  { "warehouse_description": "Almacén - Logistica Inversa", "warehouse_id": 8 },
+  { "warehouse_description": "Almacén - Miraflores", "warehouse_id": 9 },
+  { "warehouse_description": "Almacén - Miraflores - Transito", "warehouse_id": 10 }
+]

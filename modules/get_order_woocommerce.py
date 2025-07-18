@@ -4,8 +4,7 @@ from woocommerce import API
 from pandas import json_normalize
 from dataclasses import dataclass, asdict
 
-
-load_dotenv()
+load_dotenv(verbose=True,override=True)
 url = os.getenv("URL")
 consumer_key = os.getenv("CONSUMER_KEY")
 consumer_secret = os.getenv("CONSUMER_SECRET")
@@ -114,12 +113,12 @@ class OrderRow:
 
     @staticmethod
     def from_item(item):
+        
         nombre_completo = (item['billing']['first_name'] + " " + item['billing']['last_name']).upper()
         nombre_completo_shipping = (item['shipping']['first_name'] + " " + item['shipping']['last_name']).upper()
 
         usuario_enviar = " " if nombre_completo == nombre_completo_shipping else nombre_completo_shipping
 
- 
         tipo_documento = OrderRow.document_type(OrderRow.get_meta_data("_billing_check_factura",item))
         ruc = OrderRow.get_meta_data("_billing_ruc",item) if tipo_documento != 'BOLETA' else '-'
         razon_social = (item['billing']['company']).upper() if tipo_documento != 'BOLETA' else '-'
@@ -175,7 +174,7 @@ class OrderRow:
 
 
 def genarate_rows_as_dicts(data):
-    return [ asdict(OrderRow.from_item(item)) for item in data ]
+    return [ asdict(OrderRow.from_item(item)) for item in data if isinstance(item, dict) ]
 
 def get_order_woocommerce():
     json_data = genarate_rows_as_dicts(datos)

@@ -2,7 +2,8 @@ from dotenv import load_dotenv
 import os
 import requests
 
-load_dotenv()
+load_dotenv(verbose=True,override=True)
+
 api_key = os.getenv("API_KEY_SISTEMA")
 url = os.getenv("URL_SISTEMA")+'api/document/search-items'
 

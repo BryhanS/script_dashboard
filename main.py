@@ -10,9 +10,9 @@ import datetime
 import pandas as pd
 import duckdb
 from sqlalchemy.dialects.mssql import NVARCHAR
+import io
 
 
-st.set_page_config(layout="wide", page_title="Dashboard Marketing", page_icon=":computer:")
 st.session_state.theme = "dark"
 st.title("Scripting")
 
@@ -56,33 +56,6 @@ if uploaded_tracking is not None:
 
 st.divider() 
 
-@st.cache_data(ttl=60)
-def get_data_order():
-    return get_order_woocommerce()
-
-
-
-if 'clicked' not in st.session_state:
-    st.session_state.clicked = False
-
-def click_button():
-    get_data_order.clear()
-    st.session_state.clicked = True
-
-    
-st.text("El botón a continuación genera un reporte de las órdenes procesadas en Woocommerce.")
-st.button('Order Woocommerce Reporte', on_click=click_button, key='order_woocommerce_button')
-# Solo mostrar el DataFrame si se hizo clic en el botón
-
-
-if st.session_state.clicked:
-    df_json = get_data_order()
-
-    if df_json is not None and not df_json.empty:
-        st.dataframe(df_json, use_container_width=True, hide_index=True,key="order_dataframe")
-    else:
-        st.info("No hay datos para mostrar.")
-st.divider()
 
 
 #######

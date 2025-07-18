@@ -4,8 +4,7 @@ import json
 from dotenv import load_dotenv  
 import os
 
-load_dotenv()
-
+load_dotenv(verbose=True,override=True)
 # url = 'https://staging-583a-catapu8.wpcomstaging.com'
 url = os.getenv("URL")
 consumer_key = os.getenv("CONSUMER_KEY")
